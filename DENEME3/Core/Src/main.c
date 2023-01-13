@@ -116,8 +116,7 @@ HAL_CAN_ActivateNotification(&hcan,CAN_IT_RX_FIFO0_MSG_PENDING);
   	TXHeader.RTR=CAN_RTR_DATA; //data frame
     TXHeader.TransmitGlobalTime=DISABLE;
 
-    message[0]=4;
-    HAL_CAN_AddTxMessage(&hcan,&TXHeader,message,&TxMailbox);
+   
 
   /* USER CODE END 2 */
 
@@ -125,7 +124,9 @@ HAL_CAN_ActivateNotification(&hcan,CAN_IT_RX_FIFO0_MSG_PENDING);
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
+ message[0]=4;
+    HAL_CAN_AddTxMessage(&hcan,&TXHeader,message,&TxMailbox);
+   HAL_Delay(500);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
