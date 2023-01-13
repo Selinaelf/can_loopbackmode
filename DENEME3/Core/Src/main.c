@@ -124,7 +124,7 @@ HAL_CAN_ActivateNotification(&hcan,CAN_IT_RX_FIFO0_MSG_PENDING);
   /* USER CODE BEGIN WHILE */
   while (1)
   {
- message[]={0x01,0x02,0x04,0x05,0x06,0x07,0x08};
+ message[]={0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08};
     HAL_CAN_AddTxMessage(&hcan,&TXHeader,message,&TxMailbox);
    HAL_Delay(500);
     /* USER CODE END WHILE */
