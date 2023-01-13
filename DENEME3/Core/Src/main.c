@@ -61,7 +61,7 @@ CAN_RxHeaderTypeDef RXHeader;
 
     uint32_t TxMailbox;
  	uint8_t message[8];
- 	uint8_t rxmessage[8];
+ 	uint8_t rxmessage[8]={0,0,0,0,0,0,0,0};
  	uint8_t count=0;
 
  	void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan){
@@ -109,7 +109,7 @@ HAL_CAN_Start(&hcan);
 HAL_CAN_ActivateNotification(&hcan,CAN_IT_RX_FIFO0_MSG_PENDING);
 
 
-    TXHeader.DLC=1; //how many bites we send
+    TXHeader.DLC=8; //how many bites we send
     TXHeader.ExtId=0;
   	TXHeader.IDE=CAN_ID_STD; //STANDART MI EXTENDED Mİ
   	TXHeader.StdId=0x65; //adress
@@ -124,7 +124,7 @@ HAL_CAN_ActivateNotification(&hcan,CAN_IT_RX_FIFO0_MSG_PENDING);
   /* USER CODE BEGIN WHILE */
   while (1)
   {
- message[0]=4;
+ message[]={0x01,0x02,0x04,0x05,0x06,0x07,0x08};
     HAL_CAN_AddTxMessage(&hcan,&TXHeader,message,&TxMailbox);
    HAL_Delay(500);
     /* USER CODE END WHILE */
